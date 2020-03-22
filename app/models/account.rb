@@ -6,7 +6,8 @@ class Account < ApplicationRecord
   has_many :subscriptions
   has_many :communities, through: :subscriptions
   has_many :posts
-
+  has_many :comments
+  
   validates_presence_of :first_name, :last_name, :username
 
   def full_name

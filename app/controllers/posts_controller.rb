@@ -9,6 +9,7 @@ before_action :auth_subscriber, only: [:new]
   end
 
   def show
+    @comment = Comment.new
   end
 
   def new
@@ -34,7 +35,7 @@ before_action :auth_subscriber, only: [:new]
   private
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = Post.includes(:comments).find(params[:id])
   end
 
   def auth_subscriber
